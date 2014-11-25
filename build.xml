@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     25 nov. 2014 15:49:08                                                        
+
+     project    
+     description
+                   
+     velleyen                                                                
+     ====================================================================== -->
+<project name="Calculatrice" default="compile">
+    <description>
+            Calculator
+    </description>
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    
+	<target name="clean" description="Remove intermediate files">
+	        <delete dir="classes"/>
+	 </target>
+	
+	<target name="clobber" depends="clean" description="remove a jar file">
+				<delete dir="hello.jar"/>
+		</target>
+	
+	<target name="compile" description="Compile the java source">
+		<mkdir dir="classes"/>
+		<javac srcdir="src/com/istic/calculator" destdir="classes"/>
+    </target>
+    	
+    <target name="jar" depends="compile" description="create a jar">
+		<jar destfile="hello.jar">
+			<fileset dir="classes" includes="**/*.class"/>
+			<manifest>
+				<attribute name="Main-Class" value="HelloProgram"/>
+			</manifest>
+		</jar>
+	</target>
+</project>
